@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: postgre-spring-boot
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: FISH
+      POSTGRES_PASSWORD: Qwerty@123
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5337:5432"
+    networks:
+      - db
+    restart: unless-stopped
+networks:
+  db:
+    driver: bridge
+volumes:
+  db:
