@@ -1,9 +1,6 @@
 package com.AmiStyle.SpringWeek2;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,17 +12,15 @@ public class SoftwareEngineer {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Integer id;
     private String name;
+    @ElementCollection
     private List<String> techStack;
-
     public SoftwareEngineer() {
     }
 
-    public SoftwareEngineer(Integer id,
-                            String name,
-                            String techStack) {
+    public SoftwareEngineer(Integer id, String name, List<String> techStack) {
         this.id = id;
         this.name = name;
-        this.techStack = Collections.singletonList(techStack);
+        this.techStack = techStack;
     }
 
     public Integer getId() {
@@ -48,10 +43,9 @@ public class SoftwareEngineer {
         return techStack;
     }
 
-    public void setTechStack(String techStack) {
-        this.techStack = Collections.singletonList(techStack);
+    public void setTechStack(List<String> techStack) {
+        this.techStack = techStack;
     }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

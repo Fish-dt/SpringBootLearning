@@ -1,6 +1,7 @@
 package com.AmiStyle.SpringWeek2;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -13,5 +14,9 @@ public class SoftwareEngineerService {
     }
     public List<SoftwareEngineer> getSoftwareAllEngineers(){
         return softwareEngineerRepository.findAll();
+    }
+
+    public void insertSoftwareEngineer(SoftwareEngineer softwareEngineer) {
+        softwareEngineerRepository.save(softwareEngineer);
     }
 }

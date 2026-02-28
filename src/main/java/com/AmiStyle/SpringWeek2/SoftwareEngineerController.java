@@ -1,8 +1,6 @@
 package com.AmiStyle.SpringWeek2;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +18,9 @@ public class SoftwareEngineerController {
     public List<SoftwareEngineer> getEngineers() {
         return softwareEngineerService.getSoftwareAllEngineers();
     };
+
+    @PostMapping
+    public void addSoftwareEngineer(@RequestBody SoftwareEngineer softwareEngineer){
+        softwareEngineerService.insertSoftwareEngineer(softwareEngineer);
+    }
 }
